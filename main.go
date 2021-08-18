@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -23,7 +24,7 @@ func main() {
 		log.Fatal("no input files")
 	}
 
-	var jm *jsonpb.Marshaler
+	var jm jsonpb.Marshaler
 	for _, file := range files {
 		filePath := filepath.Join(cachePath, file[:2], file)
 		f, err := os.Open(filePath)
@@ -44,5 +45,6 @@ func main() {
 		if err := jm.Marshal(os.Stdout, &a); err != nil {
 			log.Fatalf("cannot marshal %s to json: %s", filePath, err)
 		}
+		fmt.Println("")
 	}
 }
