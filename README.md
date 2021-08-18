@@ -3,5 +3,5 @@ Read AC files
 
 ```
 $ go build .
-$ ./acread path/to/ac/item
+$ ACREAD_PATH=/path/to/cache ./acread item1 item2 item3
 ```
