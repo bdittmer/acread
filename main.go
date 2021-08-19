@@ -37,6 +37,10 @@ func main() {
 			log.Fatalf("cannot read %s: %s", filePath, err)
 		}
 
+		if err := f.Close(); err != nil {
+			log.Fatalf("cannot close %s: %s", filePath, err)
+		}
+
 		var a repb.ActionResult
 		if err := proto.Unmarshal(data, &a); err != nil {
 			log.Fatalf("cannot unmarshal %s: %s", filePath, err)
